@@ -6,15 +6,29 @@
         <div class="row  p-0 mt-4">
             <div class="col-lg-4 mx-auto shadow p-0">
                 <div class="alert alert-info">
-                    <h2>Add New TODO</h2>
+                    <h2>Добавить новую задачу</h2>
                 </div>
                 <div class="p-4">
                     <form action="/add-todo/" method="POST">
                         {% csrf_token %}
                         {{form.as_p}}
                         <hr>
-                        <input type="submit" value="ADD" class="btn btn-info">
+                        <input type="submit" value="Добавить" class="btn btn-info">
                     </form>
+
+                    <form action="/add-todo/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="title">Название:</label>
+                            <input class="form-control" type="text" id='title' name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Prior:</label>
+                            <input class="form-control" type="text" id='priority' name="priority">
+                        </div>
+                        <input class="btn btn-primary" type="submit">
+                    </form>
+
                 </div>
             </div>
 
@@ -29,7 +43,7 @@
                         <br>
                         <br>
                         <div class="alert alert-info text-center">
-                            <p class="" style="font-size: 30px;">No Todos</p>
+                            <p class="" style="font-size: 30px;">Заведите новую задачу</p>
                         </div>
                         <br>
                         <br>
@@ -41,10 +55,10 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Action</th>
+                                    <th>Название</th>
+                                    <th>Статус</th>
+                                    <th>Приоритет</th>
+                                    <th>Действие</th>
                                 </tr>
                             </thead>
 
@@ -63,11 +77,11 @@
                                     </td>
                                     <td>{{todo.priority}}</td>
                                     <td>
-                                        <a href="/delete-todo/{{todo.id}}" title="Delete" class="">🗑️</a>
+                                        <a href="/delete-todo/{{todo.id}}" title="Delete" class="">🗑️ Удалить</a>
                                         {% if todo.status == 'P'%}
                                         <a href="/change-status/{{todo.id}}/C" title="Mark Completed" class="">✅</a>
                                         {%else%}
-                                        <a href="/change-status/{{todo.id}}/P" title="Mark Pending" class="">🕒</a>
+                                        <a href="/change-status/{{todo.id}}/P" title="Mark Pending" class="">🕒 Выполнено</a>
                                         {%endif%}
                                     </td>
                                 </tr>

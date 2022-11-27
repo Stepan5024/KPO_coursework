@@ -56,7 +56,6 @@
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\signup.html" />
     <Content Include="requirements.txt" />
-    <Content Include="Todo\templates\base.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -64,7 +63,6 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="Todo\" />
-    <Folder Include="Todo\templates\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

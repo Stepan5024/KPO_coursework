@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import Textarea
 from django.contrib.auth.models import User
 # Create your models here.
 #  title 
@@ -10,8 +11,8 @@ from django.contrib.auth.models import User
 
 class TODO(models.Model):
     status_choices = [
-    ('C', 'COMPLETED'),
-    ('P', 'PENDING'),
+    ('P', 'Compl'),
+    ('C', 'Pend'),
     ]
     priority_choices = [
     ('1', '1'),
@@ -30,3 +31,6 @@ class TODO(models.Model):
     user  = models.ForeignKey(User  , on_delete= models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     priority = models.CharField(max_length=2 , choices=priority_choices)
+    
+    def __str__(self):
+        return f"Review is {self.pk} {self.title} {self.status}"
